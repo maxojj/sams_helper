@@ -110,13 +110,11 @@ func (session *Session) CheckCapacity() error {
 		return nil
 	}
 
-	err = session.GetCapacity(result)
-	if err != nil {
+	if err = session.GetCapacity(result); err != nil {
 		return err
 	}
 
-	err = session.SetCapacity()
-	if err != nil {
+	if err = session.SetCapacity(); err != nil {
 		return err
 	}
 	return nil

@@ -24,7 +24,7 @@ perDateLen : 7
 # 代理设置
 proxySet:
   # 是否开启代理
-  isEnabled: true
+  isEnabled: false
   # 代理 URL
   proxyUrl: "http://127.0.0.1:9091"
 
