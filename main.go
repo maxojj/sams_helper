@@ -151,8 +151,11 @@ func main() {
 				goto CartLoop
 			}
 		}
-
-		fmt.Printf("[>] 已自动选择第一条可用的配送时段\n")
+		if session.Setting.BruteCapacity && session.FloorInfo.StoreInfo.StoreType == 2 {
+			fmt.Printf("[>] 准备爆破提交可配送时段\n")
+		} else {
+			fmt.Printf("[>] 已自动选择第一条可用的配送时段\n")
+		}
 
 	OrderLoop:
 		// 下订单操作
@@ -170,6 +173,7 @@ func main() {
 			fmt.Printf("[!] %s\n", err)
 			switch err {
 			case conf.LimitedErr, conf.LimitedErr1:
+				time.Sleep(100 * time.Millisecond)
 				fmt.Println("[!] 立即重试...")
 				goto OrderLoop
 			case conf.CloseOrderTimeExceptionErr, conf.DecreaseCapacityCountError, conf.NotDeliverCapCityErr:
