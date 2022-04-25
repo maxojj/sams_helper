@@ -17,8 +17,16 @@ type AutoFixPurchaseLimitSet struct {
 	FixOnline  bool `yaml:"fixOnline"`
 }
 
+type SupplySet struct {
+	Mode      int      `yaml:"mode"`
+	IsEnabled bool     `yaml:"isEnabled"`
+	KeyWords  []string `yaml:"keyWords"`
+}
+
 type Setting struct {
 	AuthToken               string                  `yaml:"authToken"`
+	RunMode                 int                     `yaml:"runMode"`
+	SupplySet               SupplySet               `yaml:"supplySet"`
 	BruteCapacity           bool                    `yaml:"bruteCapacity"`
 	DeviceType              int64                   `yaml:"deviceType"`
 	DeliveryType            int64                   `yaml:"deliveryType"`
@@ -30,6 +38,7 @@ type Setting struct {
 	SassId                  string                  `yaml:"sassId"`
 	ProxySet                ProxySet                `yaml:"proxySet"`
 	NoticeSet               notice.NoticerSet       `yaml:"noticeSet"`
+	GoodSpuId               string
 }
 
 func InitSetting() (error, Setting) {
